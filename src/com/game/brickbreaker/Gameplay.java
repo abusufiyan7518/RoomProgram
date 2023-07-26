@@ -1,16 +1,18 @@
 package com.game.brickbreaker;
 
-import java.util.*;
 import java.awt.event.*;
 
 import javax.swing.*;
 
 import java.awt.*;
 
-import javax.swing.*;
 import javax.swing.Timer;
 
 public class Gameplay extends JPanel implements KeyListener, ActionListener {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private boolean play = false;
 	private int score = 0;
 
@@ -38,14 +40,9 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
 	}
 
 	public void paint(Graphics g) {
-		// background
 		g.setColor(Color.black);
 		g.fillRect(1, 1, 692, 592);
-
-		// drawing map
 		map.draw((Graphics2D) g);
-
-		// borders
 		g.setColor(Color.yellow);
 		g.fillRect(0, 0, 3, 592);
 		g.fillRect(0, 0, 692, 3);
@@ -64,7 +61,6 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
 			g.setColor(Color.RED);
 			g.setFont(new Font("serif", Font.BOLD, 30));
 			g.drawString("You Won", 260, 300);
-
 			g.setColor(Color.RED);
 			g.setFont(new Font("serif", Font.BOLD, 20));
 			g.drawString("Press (Enter) to Restart", 230, 350);
@@ -76,15 +72,12 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
 			g.setColor(Color.RED);
 			g.setFont(new Font("serif", Font.BOLD, 30));
 			g.drawString("Game Over, Scores: " + score, 190, 300);
-
 			g.setColor(Color.RED);
 			g.setFont(new Font("serif", Font.BOLD, 20));
 			g.drawString("Press (Enter) to Restart", 230, 350);
 		}
-
 		g.dispose();
 	}
-
 	public void keyPressed(KeyEvent e) {
 		if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
 			if (playerX >= 600) {
@@ -93,7 +86,6 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
 				moveRight();
 			}
 		}
-
 		if (e.getKeyCode() == KeyEvent.VK_LEFT) {
 			if (playerX < 10) {
 				playerX = 10;
@@ -116,23 +108,18 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
 			}
 		}
 	}
-
 	public void keyReleased(KeyEvent e) {
 	}
-
 	public void keyTyped(KeyEvent e) {
 	}
-
 	public void moveRight() {
 		play = true;
 		playerX += 20;
 	}
-
 	public void moveLeft() {
 		play = true;
 		playerX -= 20;
 	}
-
 	public void actionPerformed(ActionEvent e) {
 		timer.start();
 		if (play) {
