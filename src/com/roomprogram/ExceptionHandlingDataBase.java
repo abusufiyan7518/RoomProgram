@@ -1,15 +1,13 @@
 package com.roomprogram;
 
-import java.sql.SQLException;
-
 class DataBaseConnection {
-	String connect() throws SQLException {
-		throw new SQLException("Error connecting to database>>>");
+	String connect()  {
+		return "Error connecting to database>>>";
 	}
 }
 
 class MYSqlConnection extends DataBaseConnection {
-	String connect() throws SQLException {
+	String connect()  {
 		System.out.println("Connecting to MySql database");
 		return super.connect();
 	}
@@ -18,11 +16,7 @@ class MYSqlConnection extends DataBaseConnection {
 public class ExceptionHandlingDataBase {
 	public static void main(String[] args) {
 		DataBaseConnection dbconnection = new MYSqlConnection();
-		try {
-			dbconnection.connect();
-		} catch (SQLException e) {
-			System.out.println("Caught Exception: " + e.getMessage());
-		}
+		System.out.println(dbconnection.connect());
 
 	}
 }

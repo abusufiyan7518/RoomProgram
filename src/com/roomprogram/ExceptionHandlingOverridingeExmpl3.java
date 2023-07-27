@@ -1,17 +1,17 @@
 package com.roomprogram;
 
 class Parent {
-	String show() throws ArithmeticException {
+	String show() {
+		int a=10,b=0,c=a/b;
 		System.out.println("Parent!");
-		throw new ArithmeticException("Arithematic Exception:");
+		return "Arithematic Exception:";
 	}
 }
 
 class Child extends Parent {
-	String show() throws ArithmeticException {
-		
-		System.out.println("Child!");
-		throw new ArithmeticException("Child Arithematic Exception:");
+	String show()  {
+		int a=0,b=0,c=a/b;
+		return "Child Arithematic Exception:\n"+super.show();
 		
 	}
 }
@@ -19,11 +19,8 @@ class Child extends Parent {
 public class ExceptionHandlingOverridingeExmpl3 {
 	public static void main(String[] args) {
 		Parent obj = new Child();
-		try {
-			obj.show();
-		} catch (ArithmeticException e) {
-			System.out.println("Caught Exception: " + e.getMessage());
-		}
+			System.out.println(obj.show());
+		
 	}
 }
 

@@ -1,27 +1,23 @@
 package com.roomprogram;
 
 class Cycle {
-	String startEngine() throws Exception {
-		System.out.println("Engine Start... ");
-		throw new Exception("Engine failed to start !");
-
+	String startEngine() {
+		return "Engine Start... ";
+		
 	}
 }
 
 class Bicycle extends Cycle {
-	String startEngine() throws Exception {
-		System.out.println("Starting car engine..");
-		return super.startEngine();
+	String startEngine()  {
+		return "Starting car engine..\n"+super.startEngine();
 	}
 }
 
 public class ExceptionHandlingExmpl7 {
 	public static void main(String[] args) {
 		Cycle car = new Bicycle();
-		try {
-			car.startEngine();
-		} catch (Exception e) {
-			System.out.println("Caught Exception: " + e.getMessage());
-		}
+
+			System.out.println(car.startEngine());
+		
 	}
 }

@@ -1,27 +1,22 @@
 package com.roomprogram;
 
 class Superclass {
-	String doSomething() throws InterruptedException {
-		System.out.println("SuperClass..");
-		throw new InterruptedException("Interrupted!");
+	String doSomething() {
+		return "SuperClass..Interrupted!";
 	}
 }
 
 class Subclass extends Superclass {
-	String doSomething() throws InterruptedException {
-		System.out.println("Subclass..");
-		throw new InterruptedException("Subclass Interrupted!");
+	String doSomething() {
+		return "Subclass Interrupted!\n"+super.doSomething();
 	}
 }
 
 public class ExceptionHandlingOverriding {
-	public static void main(String[] args) throws InterruptedException {
+	public static void main(String[] args) {
 		Superclass obj = new Subclass();
-		try {
-			obj.doSomething();
 
-		} catch (InterruptedException e) {
-			System.out.println("Caught Exception: " + e);
-		}
+		System.out.println(obj.doSomething());
+
 	}
 }
